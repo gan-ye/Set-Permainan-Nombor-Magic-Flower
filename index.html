@@ -121,7 +121,7 @@
 </head>
 <body>
 
-    <audio id="click-sound" src="sound.MP3"></audio>
+    <audio id="click-sound" src="./sound.mp3" preload="auto"></audio>
 
     <div id="start-screen">
         <button id="start-btn" onclick="startGame()">
@@ -176,9 +176,12 @@
             });
         }
 
-        // 按钮点击：开始游戏
+       // 按下开始按钮
         function startGame() {
+            // 针对某些严格的移动端浏览器，在第一次用户交互时强制加载和播放
+            audio.load(); 
             playSound();
+            
             startScreen.style.display = 'none';
             gameScreen.style.display = 'flex';
             generateQuestion();
